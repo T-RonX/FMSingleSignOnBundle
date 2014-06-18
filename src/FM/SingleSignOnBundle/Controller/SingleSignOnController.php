@@ -19,10 +19,26 @@ class SingleSignOnController extends Controller
         $encoder = $this->get('fm_sso.security.authentication.encoder');
         $om = $this->get('fm_sso.security.authentication.manager.otp');
 
-        $expires = time() + 300; // expires in 5 minutes
-        $value = $encoder->generateOneTimePasswordValue(get_class($user), $user->getUsername(), $expires, $user->getPassword());
-        $otp = $om->create($value, $expires);
-
+        $ok = false;
+        $otp = null;
+        
+        do
+        {
+	        try
+	        {
+	        	$expires = time() + 300; // expires in 5 minutes
+	        	$value = $encoder->generateOneTimePasswordValue(get_class($user), $user->getUsername(), $expires, $user->getPassword());
+	        	$otp = $om->create($value, $expires);
+	        	$ok = true;
+	        }
+	        catch(\Exception $e)
+	        {
+	        	sleep(1);
+	        	$ok = false;
+	        }
+        }
+        while(!$ok);
+		
         $redirectUri = $request->get('_target_path');
         $redirectUri .= sprintf('&%s=%s', $otpParameter, rawurlencode($otp));
 
