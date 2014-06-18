@@ -1,23 +1,27 @@
 {
-    "name": "fm/sso-bundle",
-    "type": "symfony-bundle",
-    "description": "Single-sign-on bundle for Symfony2",
-    "keywords": ["single-sign-on", "sso", "login", "otp"],
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Peter Kruithof",
-            "email": "peter@financial-media.nl"
-        }
-    ],
-    "require": {
-        "php": ">=5.3.3",
-        "symfony/symfony": ">=2.1",
-        "ext-openssl": "*"
-    },
-    "autoload": {
-        "psr-0": {
-            "FM": "src/"
-        }
-    }
+	"name" : "t-ronx/sso-bundle",
+	"type" : "symfony-bundle",
+	"description" : "Single-sign-on bundle for Symfony2",
+	"keywords" : [
+		"single-sign-on",
+		"sso",
+		"login",
+		"otp"
+	],
+	"license" : "MIT",
+	"authors" : [{
+			"name" : "Peter Kruithof",
+			"email" : "peter@financial-media.nl"
+		}
+	],
+	"require" : {
+		"php" : ">=5.3.3",
+		"symfony/symfony" : ">=2.1",
+		"ext-openssl" : "*"
+	},
+	"autoload" : {
+		"psr-0" : {
+			"FM" : "src/"
+		}
+	}
 }
